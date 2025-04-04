@@ -1,0 +1,49 @@
+/* src/App.module.css */
+
+#root {
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 2rem;
+	text-align: center;
+}
+
+:root {
+	/* Set Global Font Families */
+	font-family: "Open Sans", system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+
+	/* Optimization */
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	margin: 0;
+	min-width: 320px;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	background-color: rgba(0, 0, 0, 0.6);
+	text-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Pseudo-element for the blury background */
+body::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	/* background-image: url("../assets/branding/blue_sky_clouds_bg.jpg"); */
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	opacity: 0.6;
+	z-index: -1;
+}

@@ -1,0 +1,38 @@
+/* styles/fonts.css */
+
+@font-face {
+	font-family: "Montserrat";
+	src: local("Montserrat"),
+		url("/src/assets/fonts/Montserrat/Montserrat-Medium.woff2")
+			format("woff2"),
+		url("/src/assets/fonts/Montserrat/Montserrat-Medium.woff")
+			format("woff");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Open Sans";
+	src: local("Open Sans"),
+		url("/src/assets/fonts/OpenSans/OpenSans-Regular.woff2") format("woff2"),
+		url("/src/assets/fonts/OpenSans/OpenSans-Regular.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* Global Styling */
+.header,
+h1,
+h2,
+h3 {
+	font-family: "Montserrat", sans-serif;
+	font-weight: 800;
+}
+
+body,
+p {
+	font-family: "Open Sans", sans-serif;
+	font-weight: 400;
+}
