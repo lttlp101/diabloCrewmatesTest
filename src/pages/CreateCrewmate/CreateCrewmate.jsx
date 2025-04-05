@@ -2,8 +2,9 @@
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import CrewmateForm from "../../components/CrewmateForm/CrewmateForm";
 import { createCrewmate } from "../../services/crewmateService";
+import CrewmateForm from "../../components/CrewmateForm/CrewmateForm";
+import diabloGroupPic from "../../assets/branding/diablo_all_classes.png";
 import styles from "./CreateCrewmate.module.css";
 
 const CreateCrewmate = () => {
@@ -25,7 +26,7 @@ const CreateCrewmate = () => {
 			<h1 className={styles.title}>Create a New Crewmate</h1>
 
 			<div className={styles.crewmateImage}>
-				{/* Add the crewmate group image here */}
+				<img src={diabloGroupPic} alt="Diablo All Classes Pic" />
 			</div>
 
 			{error && <p className={styles.error}>{error}</p>}
