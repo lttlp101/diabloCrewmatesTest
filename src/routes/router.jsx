@@ -18,6 +18,7 @@ const CrewmateGallery = lazy(() =>
 const CrewmateDetail = lazy(() =>
 	import("../pages/CrewmateDetail/CrewmateDetail")
 );
+const NotFound = lazy(() => import("../pages/NotFound/NotFound"));
 
 // Loading fallback component
 const PageLoader = () => (
@@ -71,6 +72,15 @@ const router = createBrowserRouter([
 				element: (
 					<Suspense fallback={<PageLoader />}>
 						<UpdateCrewmate />
+					</Suspense>
+				),
+			},
+			{
+				// Catch-all route for 404 errors
+				path: "*",
+				element: (
+					<Suspense fallback={<PageLoader />}>
+						<NotFound />
 					</Suspense>
 				),
 			},

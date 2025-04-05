@@ -1,0 +1,75 @@
+/* pages/NotFound/NotFound.module.css */
+
+.notFoundPage {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 2rem;
+	max-width: 800px;
+	margin: 0 auto;
+	color: var(--text-light);
+	text-align: center;
+}
+
+.title {
+	font-size: var(--font-size-xxl);
+	margin-bottom: 2rem;
+	color: var(--accent-color);
+}
+
+.content {
+	background-color: rgba(0, 0, 0, 0.4);
+	padding: 2rem;
+	border-radius: var(--border-radius);
+	box-shadow: var(--shadow-md);
+}
+
+.message {
+	font-size: var(--font-size-lg);
+	margin-bottom: 2rem;
+}
+
+.imageContainer {
+	margin: 2rem 0;
+}
+
+.image {
+	max-width: 200px;
+	margin: 0 auto;
+}
+
+.submessage {
+	font-size: var(--font-size-md);
+	margin-bottom: 2rem;
+	opacity: 0.8;
+}
+
+.actions {
+	display: flex;
+	gap: 1rem;
+	justify-content: center;
+}
+
+.homeButton,
+.galleryButton {
+	display: inline-block;
+	padding: 0.75rem 1.5rem;
+	background-color: var(--primary-color);
+	color: var(--text-light);
+	text-decoration: none;
+	border-radius: var(--border-radius);
+	font-weight: bold;
+	transition: var(--transition-normal);
+}
+
+.homeButton {
+	background-color: var(--accent-color);
+	color: var(--text-dark);
+}
+
+.homeButton:hover,
+.galleryButton:hover {
+	transform: translateY(-3px);
+	box-shadow: var(--shadow-md);
+}
