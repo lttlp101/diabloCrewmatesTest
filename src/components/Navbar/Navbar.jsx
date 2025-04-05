@@ -3,6 +3,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Header from "../Header/Header";
+import diabloSign from "../../assets/branding/diablo_sign.gif";
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
@@ -42,6 +43,14 @@ const Navbar = () => {
 					</NavLink>
 				</li>
 			</ul>
+
+			<div className={styles.navbarBottom}>
+				<img
+					src={diabloSign}
+					alt="Animated Diablo Sign"
+					className={styles.bottomImage}
+				/>
+			</div>
 		</nav>
 	);
 };

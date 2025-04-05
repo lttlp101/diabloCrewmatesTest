@@ -23,15 +23,17 @@
 }
 
 .logo {
-	height: 40px;
+	height: 80px;
 	width: auto;
 	margin: 0 auto;
+	filter: drop-shadow(1px 4px 6px rgba(0, 0, 0, 0.6));
 }
 
 .title {
 	font-family: var(--font-heading);
-	font-size: 1.5rem;
+	font-size: 1.8rem;
 	font-weight: bold;
 	margin: 0;
 	color: var(--text-light);
+	text-shadow: 1px 4px 4px rgba(0, 0, 0, 0.6);
 }

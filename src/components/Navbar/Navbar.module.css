@@ -1,4 +1,5 @@
 /* components/Navbar/Navbar.module.css */
+
 .navbar {
 	height: 100%;
 	width: 200px;
@@ -9,7 +10,6 @@
 	bottom: 0;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
 	z-index: 10;
 }
@@ -18,10 +18,11 @@
 	list-style: none;
 	padding: 0;
 	margin: 0;
-	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	padding-top: 1rem;
+	flex-grow: 1; /* This makes the list take up available space */
 }
 
 .navItem {
@@ -47,4 +48,18 @@
 .activeLink {
 	background-color: rgba(255, 255, 255, 0.15);
 	border-left: 4px solid var(--accent-color);
+}
+
+.navbarBottom {
+	margin-top: auto; /* Pushes the container to the bottom */
+	padding: 15px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.bottomImage {
+	max-width: 80%;
+	height: auto;
 }

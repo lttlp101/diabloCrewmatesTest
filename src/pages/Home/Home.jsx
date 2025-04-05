@@ -2,6 +2,9 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import diabloGroupPic from "../../assets/branding/diablo_all_classes.png";
+import diabloTitleLogo from "../../assets/branding/diablo_logo.webp";
+
 import styles from "./Home.module.css";
 
 const Home = () => {
@@ -14,11 +17,12 @@ const Home = () => {
 				before sending them off into space!
 			</p>
 
-			<div className={styles.crewmateImage}>
-				{/* Add the crewmate group image here */}
+			<div className={styles.crewmateImages}>
+				<img src={diabloGGroupPic} alt="Diablo All Classes Pic" />
+				<img src={diabloTitleLogo} alt="Diablo Logo" />
 			</div>
 
-			<Link to="/create" className={styles.ctaButton}>
+			<Link to="/create" className={styles.createButton}>
 				Create Your First Crewmate
 			</Link>
 		</div>
