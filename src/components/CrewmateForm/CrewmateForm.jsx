@@ -1,39 +1,36 @@
-// components/CrewmateForm/CrewmateForm.jsx
-
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { validateAttributes } from "../../utils/attributeValidator";
 import styles from "./CrewmateForm.module.css";
 
-const attributeOptions = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
-const categories = [
-	"Barbarian",
-	"Sorcerer",
-	"Necromancer",
-	"Rogue",
-	"Druid",
-	"Spiritborn",
-];
-const colors = [
-	"Red",
-	"Green",
-	"Blue",
-	"Purple",
-	"Yellow",
-	"Orange",
-	"Pink",
-	"Rainbow",
-];
-
 const CrewmateForm = ({ initialData, onSubmit, mode = "create" }) => {
 	const navigate = useNavigate();
+	const categories = [
+		"Barbarian",
+		"Sorcerer",
+		"Necromancer",
+		"Rogue",
+		"Druid",
+		"Spiritborn",
+	];
+	const colors = [
+		"Red",
+		"Green",
+		"Blue",
+		"Purple",
+		"Yellow",
+		"Orange",
+		"Pink",
+		"Rainbow",
+	];
+
 	const [formData, setFormData] = useState({
 		name: "",
 		category: "",
-		strength: 10,
-		intelligence: 10,
-		willpower: 10,
-		dexterity: 10,
+		strength: 50,
+		intelligence: 50,
+		willpower: 50,
+		dexterity: 50,
 		color: "Red",
 		...initialData,
 	});
@@ -51,8 +48,9 @@ const CrewmateForm = ({ initialData, onSubmit, mode = "create" }) => {
 		setFormData((prev) => ({ ...prev, [name]: value }));
 	};
 
-	const handleAttributeChange = (attribute, value) => {
-		setFormData((prev) => ({ ...prev, [attribute]: parseInt(value) }));
+	const handleNumberChange = (e) => {
+		const { name, value } = e.target;
+		setFormData((prev) => ({ ...prev, [name]: parseInt(value, 10) }));
 	};
 
 	const validateForm = () => {
@@ -73,7 +71,28 @@ const CrewmateForm = ({ initialData, onSubmit, mode = "create" }) => {
 			};
 
 			if (!validateAttributes(formData.category, attributes)) {
-				newErrors.attributes = `For ${formData.category}, the primary attribute must be the highest`;
+				// Determine which attribute should be highest based on category
+				let primaryAttribute = "";
+				switch (formData.category.toLowerCase()) {
+					case "barbarian":
+						primaryAttribute = "Strength";
+						break;
+					case "druid":
+						primaryAttribute = "Willpower";
+						break;
+					case "rogue":
+					case "spiritborn":
+						primaryAttribute = "Dexterity";
+						break;
+					case "sorcerer":
+					case "necromancer":
+						primaryAttribute = "Intelligence";
+						break;
+					default:
+						break;
+				}
+
+				newErrors.attributes = `For ${formData.category}, the ${primaryAttribute} attribute must be higher than all other attributes`;
 			}
 		}
 
@@ -125,114 +144,69 @@ const CrewmateForm = ({ initialData, onSubmit, mode = "create" }) => {
 			</div>
 
 			{formData.category && (
-				<>
-					<div className={styles.attributesContainer}>
-						<h3>Attributes:</h3>
-						<div className={styles.attributeGroup}>
-							<label>Strength:</label>
-							<div className={styles.attributeOptions}>
-								{attributeOptions.map((value) => (
-									<button
-										key={`str-${value}`}
-										type="button"
-										className={`${styles.attributeBtn} ${
-											formData.strength === value
-												? styles.selected
-												: ""
-										}`}
-										onClick={() =>
-											handleAttributeChange(
-												"strength",
-												value
-											)
-										}
-									>
-										{value}
-									</button>
-								))}
-							</div>
-						</div>
+				<div className={styles.attributesContainer}>
+					<h3>Attributes:</h3>
 
-						<div className={styles.attributeGroup}>
-							<label>Intelligence:</label>
-							<div className={styles.attributeOptions}>
-								{attributeOptions.map((value) => (
-									<button
-										key={`int-${value}`}
-										type="button"
-										className={`${styles.attributeBtn} ${
-											formData.intelligence === value
-												? styles.selected
-												: ""
-										}`}
-										onClick={() =>
-											handleAttributeChange(
-												"intelligence",
-												value
-											)
-										}
-									>
-										{value}
-									</button>
-								))}
-							</div>
-						</div>
+					<div className={styles.attributeGroup}>
+						<label className={styles.label}>Strength:</label>
+						<input
+							type="number"
+							name="strength"
+							value={formData.strength}
+							onChange={handleNumberChange}
+							min="10"
+							max="100"
+							step="10"
+							className={styles.numberInput}
+						/>
+					</div>
 
-						<div className={styles.attributeGroup}>
-							<label>Willpower:</label>
-							<div className={styles.attributeOptions}>
-								{attributeOptions.map((value) => (
-									<button
-										key={`will-${value}`}
-										type="button"
-										className={`${styles.attributeBtn} ${
-											formData.willpower === value
-												? styles.selected
-												: ""
-										}`}
-										onClick={() =>
-											handleAttributeChange(
-												"willpower",
-												value
-											)
-										}
-									>
-										{value}
-									</button>
-								))}
-							</div>
-						</div>
+					<div className={styles.attributeGroup}>
+						<label className={styles.label}>Intelligence:</label>
+						<input
+							type="number"
+							name="intelligence"
+							value={formData.intelligence}
+							onChange={handleNumberChange}
+							min="10"
+							max="100"
+							step="10"
+							className={styles.numberInput}
+						/>
+					</div>
 
-						<div className={styles.attributeGroup}>
-							<label>Dexterity:</label>
-							<div className={styles.attributeOptions}>
-								{attributeOptions.map((value) => (
-									<button
-										key={`dex-${value}`}
-										type="button"
-										className={`${styles.attributeBtn} ${
-											formData.dexterity === value
-												? styles.selected
-												: ""
-										}`}
-										onClick={() =>
-											handleAttributeChange(
-												"dexterity",
-												value
-											)
-										}
-									>
-										{value}
-									</button>
-								))}
-							</div>
-						</div>
+					<div className={styles.attributeGroup}>
+						<label className={styles.label}>Willpower:</label>
+						<input
+							type="number"
+							name="willpower"
+							value={formData.willpower}
+							onChange={handleNumberChange}
+							min="10"
+							max="100"
+							step="10"
+							className={styles.numberInput}
+						/>
+					</div>
+
+					<div className={styles.attributeGroup}>
+						<label className={styles.label}>Dexterity:</label>
+						<input
+							type="number"
+							name="dexterity"
+							value={formData.dexterity}
+							onChange={handleNumberChange}
+							min="10"
+							max="100"
+							step="10"
+							className={styles.numberInput}
+						/>
 					</div>
 
 					{errors.attributes && (
 						<p className={styles.error}>{errors.attributes}</p>
 					)}
-				</>
+				</div>
 			)}
 
 			<div className={styles.formGroup}>
@@ -268,7 +242,15 @@ const CrewmateForm = ({ initialData, onSubmit, mode = "create" }) => {
 					<button
 						type="button"
 						className={styles.deleteBtn}
-						onClick={() => navigate(`/delete/${formData.name}`)}
+						onClick={() => {
+							if (
+								window.confirm(
+									"Are you sure you want to delete this crewmate?"
+								)
+							) {
+								navigate(`/delete/${formData.name}`);
+							}
+						}}
 					>
 						Delete Crewmate
 					</button>
