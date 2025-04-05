@@ -18,7 +18,7 @@ const Home = () => {
 			</p>
 
 			<div className={styles.crewmateImages}>
-				<img src={diabloGGroupPic} alt="Diablo All Classes Pic" />
+				<img src={diabloGroupPic} alt="Diablo All Classes Pic" />
 				<img src={diabloTitleLogo} alt="Diablo Logo" />
 			</div>
 
