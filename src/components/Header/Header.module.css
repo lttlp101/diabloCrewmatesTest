@@ -1,0 +1,37 @@
+/* components/Header/Header.module.css */
+
+.header {
+	width: 100%;
+	padding: 1.5rem 0;
+	text-align: center;
+	margin-bottom: 2rem;
+}
+
+.headerLink {
+	display: inline-block;
+	text-decoration: none;
+	color: var(--text-light);
+	transition: var(--transition-normal);
+}
+
+.headerLink:hover {
+	transform: scale(1.03);
+}
+
+.logoContainer {
+	margin-bottom: 0.5rem;
+}
+
+.logo {
+	height: 40px;
+	width: auto;
+	margin: 0 auto;
+}
+
+.title {
+	font-family: var(--font-heading);
+	font-size: 1.5rem;
+	font-weight: bold;
+	margin: 0;
+	color: var(--text-light);
+}

@@ -1,0 +1,15 @@
+/* components/Layout/Layout.module.css */
+.layout {
+	display: flex;
+	min-height: 100vh;
+	background-color: #121212;
+}
+
+.content {
+	flex: 1;
+	margin-left: 200px; /* Match Navbar width */
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
