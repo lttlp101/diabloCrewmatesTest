@@ -48,7 +48,7 @@ body::before {
 	z-index: -1;
 }
 
-/* Add to your App.css */
+/* Add to App.css */
 .page-loader {
 	display: flex;
 	justify-content: center;

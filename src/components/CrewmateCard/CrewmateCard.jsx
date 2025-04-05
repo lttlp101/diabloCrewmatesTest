@@ -2,14 +2,33 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import { loadImage } from "../../utils/imageHelper";
 import styles from "./CrewmateCard.module.css";
 
 const CrewmateCard = ({ crewmate }) => {
+	const [image, setImage] = useState(null);
+
+	useEffect(() => {
+		const loadCrewmateImage = async () => {
+			// Load image based on crewmate type (assumes image file is named after the type)
+			const imagePath = await loadImage(crewmateType.toLowerCase());
+			setImage(imagePath);
+		};
+
+		loadCrewmateImage();
+	}, [crewmateType]);
+
 	return (
 		<div
 			className={`${styles.card} ${styles[crewmate.color.toLowerCase()]}`}
 		>
 			<div className={styles.cardContent}>
+				<div className={styles.crewmateImage}>
+					{image && (
+						<img src={image} alt={`${crewmateType} Crewmate`} />
+					)}
+					<h3>{crewmateType}</h3>
+				</div>
 				<div className={styles.crewmateInfo}>
 					<p className={styles.infoRow}>
 						<span className={styles.label}>Name of Crewmate:</span>
