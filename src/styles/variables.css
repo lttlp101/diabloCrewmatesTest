@@ -1,0 +1,72 @@
+/* styles/variables.css */
+
+:root {
+	/* Color palette */
+	--primary-color: #1a1a1a;
+	--secondary-color: #333333;
+	--accent-color: #f7d51d;
+	--text-light: #ffffff;
+	--text-dark: #1a1a1a;
+
+	/* Diablo class colors */
+	--barbarian-color: #c41f3b;
+	--druid-color: #ff7d0a;
+	--rogue-color: #fff569;
+	--sorcerer-color: #69ccf0;
+	--necromancer-color: #9482c9;
+	--spiritborn-color: #33937f;
+
+	/* Crewmate colors */
+	--red: #ff5555;
+	--green: #55ff55;
+	--blue: #5555ff;
+	--purple: #aa55ff;
+	--yellow: #ffff55;
+	--orange: #ffaa55;
+	--pink: #ff55aa;
+	--rainbow: linear-gradient(
+		90deg,
+		red,
+		orange,
+		yellow,
+		green,
+		blue,
+		indigo,
+		violet
+	);
+
+	/* Layout */
+	--sidebar-width: 200px;
+	--content-max-width: 1200px;
+	--card-width: 300px;
+	--border-radius: 8px;
+
+	/* Spacing */
+	--space-xs: 4px;
+	--space-sm: 8px;
+	--space-md: 16px;
+	--space-lg: 24px;
+	--space-xl: 32px;
+
+	/* Fonts */
+	--font-heading: "Montserrat", sans-serif;
+	--font-body: "Open Sans", sans-serif;
+
+	/* Font sizes */
+	--font-size-xs: 0.75rem;
+	--font-size-sm: 0.875rem;
+	--font-size-md: 1rem;
+	--font-size-lg: 1.25rem;
+	--font-size-xl: 1.5rem;
+	--font-size-xxl: 2rem;
+
+	/* Shadows */
+	--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	--shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+	--shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+	/* Transitions */
+	--transition-fast: 0.2s ease;
+	--transition-normal: 0.3s ease;
+	--transition-slow: 0.5s ease;
+}
