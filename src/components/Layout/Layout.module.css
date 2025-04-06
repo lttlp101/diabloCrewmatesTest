@@ -1,16 +1,26 @@
 /* components/Layout/Layout.module.css */
 
 .layout {
-	display: grid;
-	grid-template-areas: "aside content"; /* Sidebar and main content */
-	grid-template-columns: auto 1fr; /* Sidebar and main content */
-	height: 100vh;
-	background-color: #121212;
+	display: flex;
+	flex-direction: column;
+	text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+	background-color: rgb(49, 1, 1);
+}
+
+.sidebar {
+	height: 100%;
+	width: 200px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	overflow-x: hidden;
+	background-color: rgb(64, 0, 0);
 }
 
 .content {
-	justify-self: stretch;
 	padding: 2rem;
+	padding-left: 240px;
+	width: 95%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -20,12 +30,4 @@
 
 /* Add media query for mobile responsiveness */
 @media (max-width: 768px) {
-	.layout {
-		grid-template-columns: 1fr; /* Single column on mobile */
-		grid-template-rows: auto 1fr; /* Navbar on top, content below */
-	}
-
-	.content {
-		padding-top: 70px; /* Space for mobile navbar */
-	}
 }

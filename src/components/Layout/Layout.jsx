@@ -8,7 +8,7 @@ import styles from "./Layout.module.css";
 const Layout = () => {
 	return (
 		<div className={styles.layout}>
-			<aside>
+			<aside className={styles.sidebar}>
 				<Navbar />
 			</aside>
 			<main className={styles.content}>
