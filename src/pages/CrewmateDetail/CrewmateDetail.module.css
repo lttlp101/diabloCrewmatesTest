@@ -1,0 +1,260 @@
+/* pages/CrewmateDetail/CrewmateDetail.module.css */
+
+.detailPage {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 2rem;
+	width: 100%;
+	max-width: 800px;
+}
+
+.title {
+	font-size: var(--font-size-xxl);
+	color: white;
+	margin-bottom: 2rem;
+	text-align: center;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.statsSection {
+	background-color: rgba(30, 30, 30, 0.7);
+	border-radius: var(--border-radius);
+	padding: 1.5rem;
+	width: 100%;
+	margin-bottom: 2rem;
+	box-shadow: var(--shadow-md);
+}
+
+.statsSection h2 {
+	font-size: var(--font-size-xl);
+	color: var(--accent-color);
+	margin-bottom: 1rem;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	padding-bottom: 0.5rem;
+}
+
+.statsList {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 1rem;
+}
+
+.statItem {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+}
+
+.statLabel {
+	font-weight: bold;
+	color: #cccccc;
+	font-size: var(--font-size-md);
+}
+
+.statValue {
+	font-size: var(--font-size-lg);
+	color: white;
+	padding: 0.5rem;
+	background-color: rgba(0, 0, 0, 0.2);
+	border-radius: 4px;
+	text-align: center;
+}
+
+.warningsSection {
+	background-color: rgba(139, 0, 0, 0.2);
+	border-radius: var(--border-radius);
+	padding: 1rem;
+	width: 100%;
+	margin-bottom: 2rem;
+	border-left: 4px solid #8b0000;
+}
+
+.warning {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: #ff9999;
+	margin-bottom: 0.5rem;
+	font-size: var(--font-size-md);
+}
+
+.classSection {
+	background-color: rgba(30, 30, 30, 0.7);
+	border-radius: var(--border-radius);
+	padding: 1.5rem;
+	width: 100%;
+	margin-bottom: 2rem;
+	box-shadow: var(--shadow-md);
+}
+
+.classSection h3 {
+	font-size: var(--font-size-lg);
+	color: var(--accent-color);
+	margin-bottom: 1rem;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	padding-bottom: 0.5rem;
+}
+
+.classContent {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+}
+
+.classImage {
+	width: 80px;
+	height: auto;
+	border-radius: var(--border-radius);
+	object-fit: contain;
+}
+
+.classDescription {
+	flex: 1;
+	color: #ffffff;
+	font-size: var(--font-size-md);
+	line-height: 1.6;
+}
+
+.actions {
+	display: flex;
+	gap: 1rem;
+	margin-bottom: 2rem;
+}
+
+.editButton {
+	background-color: var(--accent-color);
+	color: white;
+	border: none;
+	padding: 0.75rem 1.5rem;
+	border-radius: var(--border-radius);
+	font-weight: bold;
+	cursor: pointer;
+	transition: var(--transition-normal);
+	font-size: var(--font-size-md);
+}
+
+.backLink {
+	background-color: #333;
+	color: white;
+	text-decoration: none;
+	padding: 0.75rem 1.5rem;
+	border-radius: var(--border-radius);
+	font-weight: bold;
+	transition: var(--transition-normal);
+	font-size: var(--font-size-md);
+	display: inline-block;
+}
+
+.editButton:hover,
+.backLink:hover {
+	transform: translateY(-3px);
+	box-shadow: var(--shadow-md);
+}
+
+.crewmateVisual {
+	margin-top: 2rem;
+	display: flex;
+	justify-content: center;
+}
+
+.crewmateAvatar {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	position: relative;
+	border: 4px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Color variants for the crewmate avatar */
+.red {
+	background-color: var(--red);
+	box-shadow: 0 0 20px var(--red);
+}
+
+.green {
+	background-color: var(--green);
+	box-shadow: 0 0 20px var(--green);
+}
+
+.blue {
+	background-color: var(--blue);
+	box-shadow: 0 0 20px var(--blue);
+}
+
+.purple {
+	background-color: var(--purple);
+	box-shadow: 0 0 20px var(--purple);
+}
+
+.yellow {
+	background-color: var(--yellow);
+	box-shadow: 0 0 20px var(--yellow);
+}
+
+.orange {
+	background-color: var(--orange);
+	box-shadow: 0 0 20px var(--orange);
+}
+
+.pink {
+	background-color: var(--pink);
+	box-shadow: 0 0 20px var(--pink);
+}
+
+.rainbow {
+	background: var(--rainbow);
+	box-shadow: 0 0 20px white;
+	animation: rainbow-spin 3s linear infinite;
+}
+
+.loading {
+	font-size: var(--font-size-lg);
+	color: white;
+	text-align: center;
+	padding: 2rem;
+}
+
+.error {
+	background-color: rgba(255, 0, 0, 0.2);
+	color: #ff5555;
+	padding: 1.5rem;
+	border-radius: var(--border-radius);
+	width: 100%;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+}
+
+@keyframes rainbow-spin {
+	0% {
+		filter: hue-rotate(0deg);
+	}
+	100% {
+		filter: hue-rotate(360deg);
+	}
+}
+
+@media (max-width: 600px) {
+	.classContent {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.statsList {
+		grid-template-columns: 1fr;
+	}
+
+	.actions {
+		flex-direction: column;
+		width: 100%;
+	}
+
+	.editButton,
+	.backLink {
+		width: 100%;
+		text-align: center;
+	}
+}

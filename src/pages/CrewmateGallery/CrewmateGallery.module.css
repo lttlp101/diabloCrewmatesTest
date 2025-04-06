@@ -1,0 +1,112 @@
+/* pages/CrewmateGallery/CrewmateGallery.module.css */
+
+.galleryPage {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 2rem;
+	width: 100%;
+	max-width: 1200px;
+}
+
+.title {
+	font-size: var(--font-size-xxl);
+	color: white;
+	margin-bottom: 2rem;
+	text-align: center;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.statsSection {
+	background-color: rgba(30, 30, 30, 0.7);
+	border-radius: var(--border-radius);
+	padding: 1.5rem;
+	width: 100%;
+	margin-bottom: 2rem;
+	box-shadow: var(--shadow-md);
+}
+
+.statsSection h2 {
+	font-size: var(--font-size-lg);
+	color: var(--accent-color);
+	margin-bottom: 1rem;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	padding-bottom: 0.5rem;
+}
+
+.statsSection p {
+	color: white;
+	margin-bottom: 0.5rem;
+	font-size: var(--font-size-md);
+}
+
+.crewmateGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 2rem;
+	width: 100%;
+}
+
+.emptyGallery {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 4rem 2rem;
+	text-align: center;
+	width: 100%;
+}
+
+.emptyMessage {
+	font-size: var(--font-size-lg);
+	color: white;
+	margin: 2rem 0;
+}
+
+.createBtn {
+	display: inline-block;
+	background-color: var(--accent-color);
+	color: white;
+	text-decoration: none;
+	padding: 1rem 2rem;
+	border-radius: var(--border-radius);
+	font-weight: bold;
+	transition: var(--transition-normal);
+	font-size: var(--font-size-md);
+}
+
+.createBtn:hover {
+	transform: translateY(-3px);
+	box-shadow: var(--shadow-md);
+}
+
+.loading {
+	font-size: var(--font-size-lg);
+	color: white;
+	text-align: center;
+	padding: 2rem;
+}
+
+.error {
+	background-color: rgba(255, 0, 0, 0.2);
+	color: #ff5555;
+	padding: 1.5rem;
+	border-radius: var(--border-radius);
+	width: 100%;
+	text-align: center;
+	margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+	.galleryPage {
+		padding: 1rem;
+	}
+
+	.title {
+		font-size: var(--font-size-xl);
+	}
+
+	.crewmateGrid {
+		grid-template-columns: 1fr;
+	}
+}

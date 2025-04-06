@@ -2,6 +2,9 @@
 
 import diabloClassesDescription from "../data/diabloClassesDescription";
 
+// Map to hold the imported images
+let imageCache = {};
+
 // Function to get class image URL from the class descriptions
 export const getClassImage = (category) => {
 	const classData = diabloClassesDescription.find(
@@ -20,38 +23,64 @@ export const getClassDescription = (category) => {
 	return classData ? classData.description : null;
 };
 
-// Import all images from assets/images directory
-export const importAllImages = () => {
-	const context = import.meta.glob("/src/assets/images/*.png");
-	const images = {};
+// Import all images using Vite's import.meta.glob dynamic import
+export const preloadAllImages = async () => {
+	if (Object.keys(imageCache).length > 0) return imageCache;
 
-	// Create an object with keys being the filename (without extension)
-	// and values being the imported image path
-	Object.keys(context).forEach((key) => {
-		// Extract filename without path and extension
-		const fileName = key.split("/").pop().replace(".png", "");
-		images[fileName] = context[key];
-	});
+	try {
+		// Import images from the assets/images directory
+		const images = import.meta.glob("/src/assets/images/*.png");
 
-	return images;
+		for (const path in images) {
+			// Extract filename without extension
+			const fileName = path
+				.split("/")
+				.pop()
+				.replace(".png", "")
+				.toLowerCase();
+
+			try {
+				// Dynamically import the image and store it
+				const module = await images[path]();
+				imageCache[fileName] = module.default;
+			} catch (error) {
+				console.error(`Error loading image ${path}:`, error);
+			}
+		}
+
+		return imageCache;
+	} catch (error) {
+		console.error("Error preloading images:", error);
+		return {};
+	}
 };
 
-// Create a function to load an image dynamically
+// Load a specific image by name
 export const loadImage = async (imageName) => {
-	const images = importAllImages();
+	if (!imageName) return null;
 
-	if (images[imageName]) {
-		// For Vite/import.meta.glob, we need to dynamically import
-		const importedImage = await images[imageName]();
-		return importedImage.default;
+	const normalizedName = imageName.toLowerCase();
+
+	try {
+		// If we've already loaded this image, return it from cache
+		if (imageCache[normalizedName]) {
+			return imageCache[normalizedName];
+		}
+
+		// Otherwise, load all images and then return the one we need
+		await preloadAllImages();
+		return imageCache[normalizedName] || null;
+	} catch (error) {
+		console.error(`Error loading image ${imageName}:`, error);
+		return null;
 	}
-
-	console.warn(`Image "${imageName}" not found in assets/images directory.`);
-	return null;
 };
 
 // Helper to get all available image names
-export const getAvailableImageNames = () => {
-	const images = importAllImages();
+export const getAvailableImageNames = async () => {
+	const images = await preloadAllImages();
 	return Object.keys(images);
 };
+
+// Preload images on module initialization
+preloadAllImages().catch(console.error);

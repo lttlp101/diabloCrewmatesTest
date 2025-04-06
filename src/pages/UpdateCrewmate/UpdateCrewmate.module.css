@@ -1,0 +1,143 @@
+/* pages/UpdateCrewmate/UpdateCrewmate.module.css */
+
+.updatePage {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 2rem;
+	width: 100%;
+	max-width: 800px;
+}
+
+.title {
+	font-size: var(--font-size-xxl);
+	color: white;
+	margin-bottom: 2rem;
+	text-align: center;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.crewmateImage {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 2rem;
+	position: relative;
+}
+
+.crewmateImage img {
+	max-width: 300px;
+	height: auto;
+	border-radius: var(--border-radius);
+	box-shadow: var(--shadow-md);
+	filter: drop-shadow(0 0 8px rgba(139, 35, 3, 0.6));
+}
+
+.currentInfo {
+	background-color: rgba(30, 30, 30, 0.7);
+	border-radius: var(--border-radius);
+	padding: 1.5rem;
+	width: 100%;
+	margin-bottom: 2rem;
+	box-shadow: var(--shadow-md);
+}
+
+.currentInfo h2 {
+	font-size: var(--font-size-lg);
+	color: var(--accent-color);
+	margin-bottom: 1rem;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	padding-bottom: 0.5rem;
+}
+
+.currentInfo p {
+	color: white;
+	font-size: var(--font-size-md);
+}
+
+.actions {
+	display: flex;
+	justify-content: center;
+	margin-top: 1.5rem;
+	width: 100%;
+}
+
+.deleteButton {
+	background-color: #5e0000;
+	color: white;
+	border: none;
+	padding: 0.75rem 1.5rem;
+	border-radius: var(--border-radius);
+	font-weight: bold;
+	cursor: pointer;
+	transition: var(--transition-normal);
+	font-size: var(--font-size-md);
+}
+
+.deleteButton:hover {
+	background-color: #8a0000;
+	transform: translateY(-3px);
+	box-shadow: var(--shadow-md);
+}
+
+.successMessage {
+	background-color: rgba(0, 128, 0, 0.2);
+	color: #66ff66;
+	padding: 1rem;
+	border-radius: var(--border-radius);
+	width: 100%;
+	margin-bottom: 1.5rem;
+	text-align: center;
+	font-weight: bold;
+	border-left: 4px solid #008000;
+}
+
+.error {
+	background-color: rgba(255, 0, 0, 0.2);
+	color: #ff5555;
+	padding: 1.5rem;
+	border-radius: var(--border-radius);
+	width: 100%;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+}
+
+.backLink {
+	background-color: #333;
+	color: white;
+	text-decoration: none;
+	padding: 0.75rem 1.5rem;
+	border-radius: var(--border-radius);
+	font-weight: bold;
+	transition: var(--transition-normal);
+	font-size: var(--font-size-md);
+	display: inline-block;
+}
+
+.backLink:hover {
+	transform: translateY(-3px);
+	box-shadow: var(--shadow-md);
+}
+
+.loading {
+	font-size: var(--font-size-lg);
+	color: white;
+	text-align: center;
+	padding: 2rem;
+}
+
+@media (max-width: 768px) {
+	.updatePage {
+		padding: 1rem;
+	}
+
+	.title {
+		font-size: var(--font-size-xl);
+	}
+
+	.crewmateImage img {
+		max-width: 200px;
+	}
+}

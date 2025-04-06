@@ -1,6 +1,6 @@
 // components/CrewmateCard/CrewmateCard.jsx
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { loadImage } from "../../utils/imageHelper";
 import styles from "./CrewmateCard.module.css";
@@ -10,13 +10,19 @@ const CrewmateCard = ({ crewmate }) => {
 
 	useEffect(() => {
 		const loadCrewmateImage = async () => {
-			// Load image based on crewmate type (assumes image file is named after the type)
-			const imagePath = await loadImage(crewmateType.toLowerCase());
-			setImage(imagePath);
+			// Load image based on crewmate category (assumes image file is named after the category)
+			try {
+				const imagePath = await loadImage(
+					crewmate.category.toLowerCase()
+				);
+				setImage(imagePath);
+			} catch (error) {
+				console.error("Failed to load crewmate image:", error);
+			}
 		};
 
 		loadCrewmateImage();
-	}, [crewmateType]);
+	}, [crewmate.category]);
 
 	return (
 		<div
@@ -24,10 +30,14 @@ const CrewmateCard = ({ crewmate }) => {
 		>
 			<div className={styles.cardContent}>
 				<div className={styles.crewmateImage}>
-					{image && (
-						<img src={image} alt={`${crewmateType} Crewmate`} />
+					{image ? (
+						<img
+							src={image}
+							alt={`${crewmate.category} Crewmate`}
+						/>
+					) : (
+						<div className={styles.imagePlaceholder}></div>
 					)}
-					<h3>{crewmateType}</h3>
 				</div>
 				<div className={styles.crewmateInfo}>
 					<p className={styles.infoRow}>

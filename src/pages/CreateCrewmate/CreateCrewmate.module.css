@@ -1,0 +1,58 @@
+/* pages/CreateCrewmate/CreateCrewmate.module.css */
+
+.createPage {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 2rem;
+	width: 100%;
+	max-width: 800px;
+}
+
+.title {
+	font-size: var(--font-size-xxl);
+	color: white;
+	margin-bottom: 2rem;
+	text-align: center;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.crewmateImage {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 2rem;
+	position: relative;
+}
+
+.crewmateImage img {
+	max-width: 300px;
+	height: auto;
+	border-radius: var(--border-radius);
+	box-shadow: var(--shadow-md);
+	filter: drop-shadow(0 0 8px rgba(139, 35, 3, 0.6));
+}
+
+.error {
+	background-color: rgba(255, 0, 0, 0.2);
+	color: #ff5555;
+	padding: 1rem;
+	border-radius: var(--border-radius);
+	width: 100%;
+	margin-bottom: 1.5rem;
+	text-align: center;
+	font-weight: bold;
+}
+
+@media (max-width: 768px) {
+	.createPage {
+		padding: 1rem;
+	}
+
+	.title {
+		font-size: var(--font-size-xl);
+	}
+
+	.crewmateImage img {
+		max-width: 200px;
+	}
+}
