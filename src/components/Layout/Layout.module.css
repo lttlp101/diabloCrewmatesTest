@@ -1,16 +1,31 @@
 /* components/Layout/Layout.module.css */
 
 .layout {
-	display: flex;
-	min-height: 100vh;
+	display: grid;
+	grid-template-areas: "aside content"; /* Sidebar and main content */
+	grid-template-columns: auto 1fr; /* Sidebar and main content */
+	height: 100vh;
 	background-color: #121212;
 }
 
 .content {
-	flex: 1;
-	margin-left: 200px; /* Match Navbar width */
+	justify-self: stretch;
 	padding: 2rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	min-height: 100vh;
+	box-sizing: border-box;
+}
+
+/* Add media query for mobile responsiveness */
+@media (max-width: 768px) {
+	.layout {
+		grid-template-columns: 1fr; /* Single column on mobile */
+		grid-template-rows: auto 1fr; /* Navbar on top, content below */
+	}
+
+	.content {
+		padding-top: 70px; /* Space for mobile navbar */
+	}
 }

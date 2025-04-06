@@ -3,7 +3,7 @@
 .navbar {
 	height: 100%;
 	width: 200px;
-	background-color: rgba(68, 68, 68, 0.95);
+	background-color: #400000; /* Changed to dark red */
 	position: fixed;
 	left: 0;
 	top: 0;
