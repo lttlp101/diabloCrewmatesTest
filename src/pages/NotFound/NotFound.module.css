@@ -6,7 +6,7 @@
 	align-items: center;
 	justify-content: center;
 	padding: 2rem;
-	max-width: 1200px;
+	width: clamp(800px, 90vw, 1000px);
 	margin: 0 auto;
 	color: var(--text-light);
 	text-align: center;
