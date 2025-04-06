@@ -13,7 +13,7 @@ const Home = () => {
 
 			<p className={styles.description}>
 				Here is where you can create your very own set of crewmates
-				before sending them off into space!
+				before sending them off into battle with Lilith!
 			</p>
 
 			<div className={styles.crewmateImages}>
