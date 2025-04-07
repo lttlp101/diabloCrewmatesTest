@@ -109,7 +109,8 @@
 	}
 
 	.crewmateGrid {
-		gap: 1.5rem; /* Slightly reduced gap on medium screens */
+		gap: 2rem; /* Slightly reduced gap on medium screens */
+		width: 90%;
 	}
 }
 
