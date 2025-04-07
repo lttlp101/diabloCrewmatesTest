@@ -24,7 +24,7 @@
 
 .label {
 	font-weight: bold;
-	color: #ffffff;
+	color: var(--text-light);
 	font-size: var(--font-size-md);
 }
 
@@ -35,7 +35,7 @@
 	border-radius: var(--border-radius);
 	border: 1px solid #444444;
 	background-color: #2a2a2a;
-	color: #ffffff;
+	color: var(--text-light);
 	font-size: var(--font-size-md);
 	width: 100%; /* Take full width of the form group, which is now limited */
 	transition: var(--transition-fast);
@@ -98,7 +98,7 @@
 	align-items: center;
 	gap: 0.5rem;
 	cursor: pointer;
-	color: #ffffff;
+	color: var(--text-light);
 }
 
 .colorInput {

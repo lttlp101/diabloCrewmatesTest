@@ -274,6 +274,7 @@ const CrewmateGallery = () => {
 					</div>
 				</div>
 			)}
+
 			{/* Success Metric */}
 			{successMetric && (
 				<div

@@ -74,7 +74,7 @@ const CrewmateCard = ({ crewmate }) => {
 						</span>
 					</p>
 
-					{/* Added attribute rows */}
+					{/* Attribute rows */}
 					<p className={styles.infoRow}>
 						<span className={styles.label}>Strength:</span>
 						<span className={styles.value}>

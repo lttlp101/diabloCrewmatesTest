@@ -11,7 +11,7 @@
 
 .title {
 	font-size: var(--font-size-xxl);
-	color: white;
+	color: var(--text-light);
 	margin-bottom: 2rem;
 	text-align: center;
 	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
@@ -42,7 +42,7 @@
 }
 
 .statsSection p {
-	color: white;
+	color: var(--text-light);
 	margin-bottom: 0.5rem;
 	font-size: var(--font-size-md);
 }
@@ -68,7 +68,7 @@
 
 .attributeHeader {
 	font-weight: bold;
-	color: white;
+	color: var(--text-light);
 	font-size: var(--font-size-md);
 	margin-bottom: 0.5rem;
 	text-align: center;
@@ -107,14 +107,14 @@
 
 .emptyMessage {
 	font-size: var(--font-size-lg);
-	color: white;
+	color: var(--text-light);
 	margin: 2rem 0;
 }
 
 .createBtn {
 	display: inline-block;
 	background-color: var(--accent-color);
-	color: white;
+	color: var(--text-light);
 	text-decoration: none;
 	padding: 1rem 2rem;
 	border-radius: var(--border-radius);
@@ -130,7 +130,7 @@
 
 .loading {
 	font-size: var(--font-size-lg);
-	color: white;
+	color: var(--text-light);
 	text-align: center;
 	padding: 2rem;
 }
@@ -197,7 +197,7 @@
 	overflow: hidden;
 	border: 3px solid transparent;
 	transition: all 0.5s ease;
-	color: #fff;
+	color: var(--text-light);
 	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -224,7 +224,7 @@
 	font-size: 3rem;
 	font-weight: bold;
 	margin-bottom: 0.5rem;
-	color: white;
+	color: var(--text-light);
 }
 
 .successTier {
