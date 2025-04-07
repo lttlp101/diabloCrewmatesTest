@@ -32,6 +32,15 @@ const CrewmateCard = ({ crewmate }) => {
 		? crewmate.name.replace(/ /g, "_")
 		: crewmate.name;
 
+	// Determine primary attribute based on category
+	const getPrimaryAttribute = () => {
+		if (crewmate.category === "Barbarian") return "Strength";
+		if (crewmate.category === "Druid") return "Willpower";
+		if (["Rogue", "Spiritborn"].includes(crewmate.category))
+			return "Dexterity";
+		return "Intelligence";
+	};
+
 	return (
 		<div className={`${styles.card} ${styles[colorClass]}`}>
 			<div className={styles.cardContent}>
@@ -61,14 +70,36 @@ const CrewmateCard = ({ crewmate }) => {
 					<p className={styles.infoRow}>
 						<span className={styles.label}>Primary Attribute:</span>
 						<span className={styles.value}>
-							{crewmate.category === "Barbarian"
-								? "Strength"
-								: crewmate.category === "Druid"
-								? "Willpower"
-								: crewmate.category === "Rogue" ||
-								  crewmate.category === "Spiritborn"
-								? "Dexterity"
-								: "Intelligence"}
+							{getPrimaryAttribute()}
+						</span>
+					</p>
+
+					{/* Added attribute rows */}
+					<p className={styles.infoRow}>
+						<span className={styles.label}>Strength:</span>
+						<span className={styles.value}>
+							{crewmate.strength}
+						</span>
+					</p>
+
+					<p className={styles.infoRow}>
+						<span className={styles.label}>Intelligence:</span>
+						<span className={styles.value}>
+							{crewmate.intelligence}
+						</span>
+					</p>
+
+					<p className={styles.infoRow}>
+						<span className={styles.label}>Willpower:</span>
+						<span className={styles.value}>
+							{crewmate.willpower}
+						</span>
+					</p>
+
+					<p className={styles.infoRow}>
+						<span className={styles.label}>Dexterity:</span>
+						<span className={styles.value}>
+							{crewmate.dexterity}
 						</span>
 					</p>
 
