@@ -140,11 +140,14 @@
 	display: flex;
 	justify-content: space-between;
 	margin: 0.25rem 0;
+	color: white;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .label {
 	font-weight: bold;
 	color: #cccccc;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .value {
@@ -152,6 +155,7 @@
 	padding: 0.2rem 0.5rem;
 	background-color: rgba(0, 0, 0, 0.2);
 	border-radius: 4px;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .cardActions {
