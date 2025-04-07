@@ -35,15 +35,14 @@
 }
 
 .crewmateImages img {
-	max-width: 100%;
+	max-width: 70%;
 	height: auto;
 	border-radius: var(--border-radius);
-	box-shadow: var(--shadow-md);
 	animation: float 6s ease-in-out infinite;
 }
 
 .crewmateImages img:nth-child(2) {
-	max-width: 280px;
+	max-width: 200px;
 	filter: drop-shadow(0 0 8px rgba(139, 35, 3, 0.6));
 	animation-delay: -3s;
 }

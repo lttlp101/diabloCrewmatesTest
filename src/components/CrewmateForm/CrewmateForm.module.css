@@ -17,6 +17,9 @@
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;
+	width: 100%;
+	max-width: 400px; /* Limit the width of form groups */
+	margin: 0 auto; /* Center the form group */
 }
 
 .label {
@@ -34,7 +37,7 @@
 	background-color: #2a2a2a;
 	color: #ffffff;
 	font-size: var(--font-size-md);
-	width: 100%;
+	width: 100%; /* Take full width of the form group, which is now limited */
 	transition: var(--transition-fast);
 }
 
@@ -51,12 +54,14 @@
 	padding: 1.5rem;
 	border-radius: var(--border-radius);
 	margin-top: 1rem;
+	width: 100%; /* Full width of the form */
 }
 
 .attributesContainer h3 {
 	margin-bottom: 1rem;
 	color: var(--accent-color);
 	font-weight: bold;
+	text-align: center;
 }
 
 .attributeGroup {
@@ -64,6 +69,9 @@
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 0.75rem;
+	max-width: 400px; /* Limit the width of attribute groups */
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .attributeGroup .label {
@@ -71,7 +79,8 @@
 }
 
 .attributeGroup .numberInput {
-	flex: 0 0 120px;
+	flex: 0 0 120px; /* Fixed width for number inputs */
+	width: 120px;
 }
 
 .colorOptions {
@@ -79,6 +88,9 @@
 	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 	gap: 1rem;
 	margin-top: 0.5rem;
+	max-width: 600px; /* Prevent the color grid from stretching too wide */
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .colorLabel {
@@ -86,6 +98,7 @@
 	align-items: center;
 	gap: 0.5rem;
 	cursor: pointer;
+	color: #ffffff;
 }
 
 .colorInput {
@@ -151,6 +164,7 @@
 	cursor: pointer;
 	transition: var(--transition-normal);
 	font-size: var(--font-size-md);
+	min-width: 150px; /* Set a minimum width for buttons */
 }
 
 .submitBtn {
@@ -188,5 +202,13 @@
 	}
 	100% {
 		filter: hue-rotate(360deg);
+	}
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+	.formGroup,
+	.attributeGroup {
+		max-width: 100%; /* Allow full width on mobile */
 	}
 }

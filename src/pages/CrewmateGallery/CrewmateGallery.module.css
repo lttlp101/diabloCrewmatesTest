@@ -6,7 +6,7 @@
 	align-items: center;
 	padding: 2rem;
 	width: 100%;
-	width: clamp(800px, 90vw, 1000px);
+	max-width: clamp(800px, 80vw, 1200px);
 }
 
 .title {
@@ -40,11 +40,12 @@
 	font-size: var(--font-size-md);
 }
 
+/* Updated grid to show exactly 2 cards per row */
 .crewmateGrid {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-	gap: 2rem;
-	width: 100%;
+	grid-template-columns: repeat(2, 1fr); /* Exactly 2 columns */
+	gap: 3rem;
+	width: 118%;
 }
 
 .emptyGallery {
@@ -97,9 +98,10 @@
 	margin-bottom: 2rem;
 }
 
-@media (max-width: 768px) {
+/* Responsive adjustments */
+@media (max-width: 992px) {
 	.galleryPage {
-		padding: 1rem;
+		padding: 1.5rem;
 	}
 
 	.title {
@@ -107,6 +109,28 @@
 	}
 
 	.crewmateGrid {
-		grid-template-columns: 1fr;
+		gap: 1.5rem; /* Slightly reduced gap on medium screens */
+	}
+}
+
+/* Single card per row on small screens */
+@media (max-width: 768px) {
+	.galleryPage {
+		padding: 1rem;
+	}
+
+	.crewmateGrid {
+		grid-template-columns: 1fr; /* Single column */
+		gap: 1.5rem;
+		width: 85%;
+	}
+
+	.title {
+		font-size: var(--font-size-lg);
+		margin-bottom: 1.5rem;
+	}
+
+	.statsSection {
+		padding: 1rem;
 	}
 }
