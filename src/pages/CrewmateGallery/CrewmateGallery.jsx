@@ -4,18 +4,24 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import CrewmateCard from "../../components/CrewmateCard/CrewmateCard";
 import { getAllCrewmates } from "../../services/crewmateService";
+import { calculateCrewSuccess } from "../../utils/successMetricCalculator";
 import styles from "./CrewmateGallery.module.css";
 
 const CrewmateGallery = () => {
 	const [crewmates, setCrewmates] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
+	const [successMetric, setSuccessMetric] = useState(null);
 
 	useEffect(() => {
 		const fetchCrewmates = async () => {
 			try {
 				const data = await getAllCrewmates();
 				setCrewmates(data);
+
+				// Calculate success metric
+				const metric = calculateCrewSuccess(data);
+				setSuccessMetric(metric);
 			} catch (err) {
 				setError("Failed to load crewmates. Please try again.");
 				console.error(err);
@@ -116,7 +122,71 @@ const CrewmateGallery = () => {
 				</div>
 			)}
 
-			<div className={styles.crewmateGrid}>
+			{successMetric && (
+				<div
+					className={`${styles.successMeter} ${
+						styles[successMetric.tier]
+					}`}
+				>
+					<div
+						className={styles.successMeterBackground}
+						style={{ width: `${successMetric.score}%` }}
+					></div>
+					<div className={styles.successMeterContent}>
+						<h2>Dungeon Raid Success Prediction</h2>
+						<div className={styles.successScore}>
+							{successMetric.score}%
+						</div>
+						<div className={styles.successTier}>
+							{successMetric.tier}
+						</div>
+						<div className={styles.successMessage}>
+							{successMetric.message}
+						</div>
+
+						<div className={styles.successBreakdown}>
+							<div className={styles.breakdownItem}>
+								<div className={styles.breakdownLabel}>
+									Class Diversity
+								</div>
+								<div className={styles.breakdownValue}>
+									{successMetric.classDiversity} pts
+								</div>
+							</div>
+							<div className={styles.breakdownItem}>
+								<div className={styles.breakdownLabel}>
+									Attribute Optimization
+								</div>
+								<div className={styles.breakdownValue}>
+									{successMetric.attributeOptimization} pts
+								</div>
+							</div>
+							<div className={styles.breakdownItem}>
+								<div className={styles.breakdownLabel}>
+									Team Size
+								</div>
+								<div className={styles.breakdownValue}>
+									{successMetric.teamSize} pts
+								</div>
+							</div>
+							<div className={styles.breakdownItem}>
+								<div className={styles.breakdownLabel}>
+									Color Diversity
+								</div>
+								<div className={styles.breakdownValue}>
+									{successMetric.colorDiversity} pts
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			)}
+
+			<div
+				className={`${styles.crewmateGrid} ${
+					successMetric ? styles[successMetric.tier] : ""
+				}`}
+			>
 				{crewmates.map((crewmate) => (
 					<CrewmateCard key={crewmate.name} crewmate={crewmate} />
 				))}
