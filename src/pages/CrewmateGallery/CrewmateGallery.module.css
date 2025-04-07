@@ -35,6 +35,12 @@
 	text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+.statsSection h3 {
+	color: var(--accent-color);
+	font-size: var(--font-size-md);
+	text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 .statsSection p {
 	color: white;
 	margin-bottom: 0.5rem;
