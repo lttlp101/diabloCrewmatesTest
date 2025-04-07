@@ -24,10 +24,11 @@ const CrewmateCard = ({ crewmate }) => {
 		loadCrewmateImage();
 	}, [crewmate.category]);
 
+	// Make sure the color is properly lowercase to match CSS classes
+	const colorClass = crewmate.color ? crewmate.color.toLowerCase() : "";
+
 	return (
-		<div
-			className={`${styles.card} ${styles[crewmate.color.toLowerCase()]}`}
-		>
+		<div className={`${styles.card} ${styles[colorClass]}`}>
 			<div className={styles.cardContent}>
 				<div className={styles.crewmateImage}>
 					{image ? (

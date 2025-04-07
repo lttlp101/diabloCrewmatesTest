@@ -6,34 +6,108 @@
 	overflow: hidden;
 	transition: var(--transition-normal);
 	position: relative;
-	box-shadow: var(--shadow-md);
 	width: 100%;
 	margin-bottom: 1.5rem;
+	border: 3px solid transparent; /* Slightly thicker border */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Default shadow */
 }
 
-/* Add a colored border/glow based on crewmate color */
-.card::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: -1;
-	border-radius: var(--border-radius);
-	box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.3);
+/* Enhanced color-specific styles with both border and box-shadow */
+.red {
+	border-color: var(--red);
+	box-shadow: 8px 8px 20px 5px rgba(255, 0, 0, 0.6),
+		0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.green {
+	border-color: var(--green);
+	box-shadow: 8px 8px 20px 5px rgba(0, 255, 0, 0.6),
+		0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.blue {
+	border-color: var(--blue);
+	box-shadow: 8px 8px 20px 5px rgba(0, 0, 255, 0.6),
+		0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.purple {
+	border-color: var(--purple);
+	box-shadow: 8px 8px 20px 5px rgba(138, 43, 226, 0.6),
+		0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.yellow {
+	border-color: var(--yellow);
+	box-shadow: 8px 8px 20px 5px rgba(255, 255, 0, 0.6),
+		0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.orange {
+	border-color: var(--orange);
+	box-shadow: 8px 8px 20px 5px rgba(255, 165, 0, 0.6),
+		0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.pink {
+	border-color: var(--pink);
+	box-shadow: 8px 8px 20px 5px rgba(255, 105, 180, 0.6),
+		0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.rainbow {
+	border-color: white;
+	animation: rainbow-border 3s linear infinite;
 }
 
 .card:hover {
 	transform: translateY(-5px);
-	box-shadow: var(--shadow-lg);
+	/* Enhance shadow on hover */
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Specifically enhance shadow on hover for each color */
+.red:hover {
+	box-shadow: 0 0 25px 8px rgba(255, 0, 0, 0.7), 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.green:hover {
+	box-shadow: 0 0 25px 8px rgba(0, 255, 0, 0.7), 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.blue:hover {
+	box-shadow: 0 0 25px 8px rgba(0, 0, 255, 0.7), 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.purple:hover {
+	box-shadow: 0 0 25px 8px rgba(138, 43, 226, 0.7),
+		0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.yellow:hover {
+	box-shadow: 0 0 25px 8px rgba(255, 255, 0, 0.7),
+		0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.orange:hover {
+	box-shadow: 0 0 25px 8px rgba(255, 165, 0, 0.7),
+		0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.pink:hover {
+	box-shadow: 0 0 25px 8px rgba(255, 105, 180, 0.7),
+		0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.rainbow:hover {
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+	animation: rainbow-shadow 3s linear infinite;
 }
 
 .cardContent {
 	padding: 1rem;
 	display: flex;
 	flex-direction: column;
-	align-items: evenly;
 	gap: 1rem;
 }
 
@@ -47,6 +121,13 @@
 .crewmateImage img {
 	width: 80px;
 	height: auto;
+}
+
+.imagePlaceholder {
+	width: 80px;
+	height: 80px;
+	background-color: rgba(255, 255, 255, 0.1);
+	border-radius: 50%;
 }
 
 .crewmateInfo {
@@ -77,16 +158,21 @@
 	display: flex;
 	justify-content: space-between;
 	margin-top: 1rem;
+	gap: 10px; /* Add gap between buttons */
 }
 
 .detailsLink,
 .editLink {
 	display: inline-block;
-	padding: 0.5rem 1rem;
+	padding: 0.5rem;
 	text-decoration: none;
 	border-radius: var(--border-radius);
 	font-weight: bold;
 	transition: var(--transition-fast);
+	white-space: nowrap; /* Prevent text wrapping */
+	flex: 0 auto auto; /* Prevent stretching */
+	text-align: center; /* Center text */
+	min-width: 110px; /* Set minimum width */
 }
 
 .detailsLink {
@@ -105,60 +191,73 @@
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Color variants */
-.red::before {
-	box-shadow: 0 0 20px 5px rgba(255, 0, 0, 0.3);
-}
-
-.green::before {
-	box-shadow: 0 0 20px 5px rgba(0, 255, 0, 0.3);
-}
-
-.blue::before {
-	box-shadow: 0 0 20px 5px rgba(0, 0, 255, 0.3);
-}
-
-.purple::before {
-	box-shadow: 0 0 20px 5px rgba(138, 43, 226, 0.3);
-}
-
-.yellow::before {
-	box-shadow: 0 0 20px 5px rgba(255, 255, 0, 0.3);
-}
-
-.orange::before {
-	box-shadow: 0 0 20px 5px rgba(255, 165, 0, 0.3);
-}
-
-.pink::before {
-	box-shadow: 0 0 20px 5px rgba(255, 105, 180, 0.3);
-}
-
-.rainbow::before {
-	box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.3);
-	animation: rainbow 3s linear infinite;
-}
-
-@keyframes rainbow {
+/* Animation for rainbow border */
+@keyframes rainbow-border {
 	0% {
-		box-shadow: 0 0 20px 5px rgba(255, 0, 0, 0.3);
+		border-color: red;
+		box-shadow: 8px 8px 20px 5px rgba(255, 0, 0, 0.6),
+			0 4px 8px rgba(0, 0, 0, 0.3);
 	}
 	16.6% {
-		box-shadow: 0 0 20px 5px rgba(255, 165, 0, 0.3);
+		border-color: orange;
+		box-shadow: 8px 8px 20px 5px rgba(255, 165, 0, 0.6),
+			0 4px 8px rgba(0, 0, 0, 0.3);
 	}
 	33.3% {
-		box-shadow: 0 0 20px 5px rgba(255, 255, 0, 0.3);
+		border-color: yellow;
+		box-shadow: 8px 8px 20px 5px rgba(255, 255, 0, 0.6),
+			0 4px 8px rgba(0, 0, 0, 0.3);
 	}
 	50% {
-		box-shadow: 0 0 20px 5px rgba(0, 255, 0, 0.3);
+		border-color: green;
+		box-shadow: 8px 8px 20px 5px rgba(0, 255, 0, 0.6),
+			0 4px 8px rgba(0, 0, 0, 0.3);
 	}
 	66.6% {
-		box-shadow: 0 0 20px 5px rgba(0, 0, 255, 0.3);
+		border-color: blue;
+		box-shadow: 8px 8px 20px 5px rgba(0, 0, 255, 0.6),
+			0 4px 8px rgba(0, 0, 0, 0.3);
 	}
 	83.3% {
-		box-shadow: 0 0 20px 5px rgba(75, 0, 130, 0.3);
+		border-color: indigo;
+		box-shadow: 8px 8px 20px 5px rgba(75, 0, 130, 0.6),
+			0 4px 8px rgba(0, 0, 0, 0.3);
 	}
 	100% {
-		box-shadow: 0 0 20px 5px rgba(255, 0, 0, 0.3);
+		border-color: violet;
+		box-shadow: 8px 8px 20px 5px rgba(238, 130, 238, 0.6),
+			0 4px 8px rgba(0, 0, 0, 0.3);
+	}
+}
+
+/* Enhanced animation for rainbow shadow on hover */
+@keyframes rainbow-shadow {
+	0% {
+		box-shadow: 0 0 25px 8px rgba(255, 0, 0, 0.7),
+			0 8px 16px rgba(0, 0, 0, 0.4);
+	}
+	16.6% {
+		box-shadow: 0 0 25px 8px rgba(255, 165, 0, 0.7),
+			0 8px 16px rgba(0, 0, 0, 0.4);
+	}
+	33.3% {
+		box-shadow: 0 0 25px 8px rgba(255, 255, 0, 0.7),
+			0 8px 16px rgba(0, 0, 0, 0.4);
+	}
+	50% {
+		box-shadow: 0 0 25px 8px rgba(0, 255, 0, 0.7),
+			0 8px 16px rgba(0, 0, 0, 0.4);
+	}
+	66.6% {
+		box-shadow: 0 0 25px 8px rgba(0, 0, 255, 0.7),
+			0 8px 16px rgba(0, 0, 0, 0.4);
+	}
+	83.3% {
+		box-shadow: 0 0 25px 8px rgba(75, 0, 130, 0.7),
+			0 8px 16px rgba(0, 0, 0, 0.4);
+	}
+	100% {
+		box-shadow: 0 0 25px 8px rgba(238, 130, 238, 0.7),
+			0 8px 16px rgba(0, 0, 0, 0.4);
 	}
 }
