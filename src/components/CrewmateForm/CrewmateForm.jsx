@@ -29,10 +29,10 @@ const CrewmateForm = ({ initialData, onSubmit, mode = "create" }) => {
 	const [formData, setFormData] = useState({
 		name: "",
 		category: "",
-		strength: 50,
-		intelligence: 50,
-		willpower: 50,
-		dexterity: 50,
+		strength: 10,
+		intelligence: 10,
+		willpower: 10,
+		dexterity: 10,
 		color: "Red",
 		...initialData,
 	});
@@ -157,7 +157,7 @@ const CrewmateForm = ({ initialData, onSubmit, mode = "create" }) => {
 							value={formData.strength}
 							onChange={handleNumberChange}
 							min="10"
-							max="100"
+							max="1000"
 							step="10"
 							className={styles.numberInput}
 						/>
@@ -171,7 +171,7 @@ const CrewmateForm = ({ initialData, onSubmit, mode = "create" }) => {
 							value={formData.intelligence}
 							onChange={handleNumberChange}
 							min="10"
-							max="100"
+							max="1000"
 							step="10"
 							className={styles.numberInput}
 						/>
@@ -185,7 +185,7 @@ const CrewmateForm = ({ initialData, onSubmit, mode = "create" }) => {
 							value={formData.willpower}
 							onChange={handleNumberChange}
 							min="10"
-							max="100"
+							max="1000"
 							step="10"
 							className={styles.numberInput}
 						/>
@@ -199,7 +199,7 @@ const CrewmateForm = ({ initialData, onSubmit, mode = "create" }) => {
 							value={formData.dexterity}
 							onChange={handleNumberChange}
 							min="10"
-							max="100"
+							max="1000"
 							step="10"
 							className={styles.numberInput}
 						/>

@@ -39,19 +39,27 @@ export const getAttributeWarnings = (attributes) => {
 	const warnings = [];
 
 	if (attributes.strength <= 30) {
-		warnings.push("Less Armor");
+		warnings.push(
+			"Paper armor! A gentle breeze might be your ultimate nemesis."
+		);
 	}
 
 	if (attributes.intelligence <= 30) {
-		warnings.push("Less All Resistant");
+		warnings.push(
+			"All Resistances? What all resistances? You're basically a magical sponge now."
+		);
 	}
 
 	if (attributes.willpower <= 30) {
-		warnings.push("Less Healing");
+		warnings.push(
+			"Healing? Band-Aids and wishful thinking won't save you in battle!"
+		);
 	}
 
 	if (attributes.dexterity <= 30) {
-		warnings.push("Less Dodge Chance");
+		warnings.push(
+			"Dodge chance? More like guaranteed hit piñata for enemy weapons!"
+		);
 	}
 
 	return warnings;
