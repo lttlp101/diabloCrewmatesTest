@@ -5,6 +5,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { getCrewmateByName } from "../../services/crewmateService";
 import { getAttributeWarnings } from "../../utils/attributeValidator";
 import { getClassImage, getClassDescription } from "../../utils/imageHelper";
+import inarius_pop from "../../assets/branding/diablo_inarius_pop.webp";
 import styles from "./CrewmateDetail.module.css";
 
 const CrewmateDetail = () => {
@@ -70,11 +71,14 @@ const CrewmateDetail = () => {
 		);
 	}
 
+	// Get the color class (lowercase)
+	const colorClass = crewmate.color ? crewmate.color.toLowerCase() : "";
+
 	return (
 		<div className={styles.detailPage}>
 			<h1 className={styles.title}>Crewmate: {crewmate.name}</h1>
 
-			<div className={styles.statsSection}>
+			<div className={`${styles.statsSection} ${styles[colorClass]}`}>
 				<h2>Stats:</h2>
 				<div className={styles.statsList}>
 					<div className={styles.statItem}>
@@ -127,7 +131,7 @@ const CrewmateDetail = () => {
 			)}
 
 			{classDescription && (
-				<div className={styles.classSection}>
+				<div className={`${styles.classSection} ${styles[colorClass]}`}>
 					<h3>Class Information:</h3>
 					<div className={styles.classContent}>
 						{classImage && (
@@ -158,11 +162,9 @@ const CrewmateDetail = () => {
 
 			<div className={styles.crewmateVisual}>
 				<div
-					className={`${styles.crewmateAvatar} ${
-						styles[crewmate.color.toLowerCase()]
-					}`}
+					className={`${styles.crewmateAvatar} ${styles[colorClass]}`}
 				>
-					{/* Crewmate avatar visualization */}
+					<img src={inarius_pop} alt="Diablo Inarius Pop" />
 				</div>
 			</div>
 		</div>
