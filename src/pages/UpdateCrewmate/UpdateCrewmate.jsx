@@ -12,6 +12,7 @@ import diabloGroupPic from "../../assets/branding/diablo_all_classes.png";
 import styles from "./UpdateCrewmate.module.css";
 
 const UpdateCrewmate = () => {
+	// Get the name parameter from the URL
 	const { name } = useParams();
 	const navigate = useNavigate();
 	const [crewmate, setCrewmate] = useState(null);
@@ -22,7 +23,12 @@ const UpdateCrewmate = () => {
 	useEffect(() => {
 		const fetchCrewmate = async () => {
 			try {
-				const data = await getCrewmateByName(name);
+				// Convert underscores back to spaces if present
+				const originalName = name.includes("_")
+					? name.replace(/_/g, " ")
+					: name;
+
+				const data = await getCrewmateByName(originalName);
 				if (!data) {
 					// Redirect to NotFound if crewmate doesn't exist
 					navigate("/not-found", { replace: true });
@@ -42,11 +48,22 @@ const UpdateCrewmate = () => {
 
 	const handleUpdate = async (updatedData) => {
 		try {
-			await updateCrewmate(name, updatedData);
+			// Convert underscores back to spaces if present for the original name
+			const originalName = name.includes("_")
+				? name.replace(/_/g, " ")
+				: name;
+
+			await updateCrewmate(originalName, updatedData);
 			setSuccessMessage("Crewmate updated successfully!");
+
+			// Format name for URL if it has spaces
+			const formattedUrlName = updatedData.name.includes(" ")
+				? updatedData.name.replace(/ /g, "_")
+				: updatedData.name;
+
 			// Navigate to the detail page of the updated crewmate
 			setTimeout(() => {
-				navigate(`/crewmate/${updatedData.name}`);
+				navigate(`/crewmate/${formattedUrlName}`);
 			}, 1500);
 		} catch (err) {
 			setError("Failed to update crewmate. Please try again.");
@@ -57,7 +74,12 @@ const UpdateCrewmate = () => {
 	const handleDelete = async () => {
 		if (window.confirm("Are you sure you want to delete this crewmate?")) {
 			try {
-				await deleteCrewmate(name);
+				// Convert underscores back to spaces if present
+				const originalName = name.includes("_")
+					? name.replace(/_/g, " ")
+					: name;
+
+				await deleteCrewmate(originalName);
 				// Navigate to gallery after successful delete
 				navigate("/gallery");
 			} catch (err) {

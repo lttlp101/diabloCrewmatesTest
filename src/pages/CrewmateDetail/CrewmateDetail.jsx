@@ -9,6 +9,7 @@ import inarius_pop from "../../assets/branding/diablo_inarius_pop.webp";
 import styles from "./CrewmateDetail.module.css";
 
 const CrewmateDetail = () => {
+	// Get the name parameter from the URL
 	const { name } = useParams();
 	const navigate = useNavigate();
 	const [crewmate, setCrewmate] = useState(null);
@@ -21,7 +22,12 @@ const CrewmateDetail = () => {
 	useEffect(() => {
 		const fetchCrewmate = async () => {
 			try {
-				const data = await getCrewmateByName(name);
+				// Convert underscores back to spaces if present
+				const originalName = name.includes("_")
+					? name.replace(/_/g, " ")
+					: name;
+
+				const data = await getCrewmateByName(originalName);
 				if (!data) {
 					// If no crewmate found with this name, redirect to NotFound
 					navigate("/not-found", { replace: true });
@@ -73,6 +79,11 @@ const CrewmateDetail = () => {
 
 	// Get the color class (lowercase)
 	const colorClass = crewmate.color ? crewmate.color.toLowerCase() : "";
+
+	// Format the URL for edit link - replace spaces with underscores if present
+	const formattedUrlName = crewmate.name.includes(" ")
+		? crewmate.name.replace(/ /g, "_")
+		: crewmate.name;
 
 	return (
 		<div className={styles.detailPage}>
@@ -151,7 +162,7 @@ const CrewmateDetail = () => {
 			<div className={styles.actions}>
 				<button
 					className={styles.editButton}
-					onClick={() => navigate(`/edit/${crewmate.name}`)}
+					onClick={() => navigate(`/edit/${formattedUrlName}`)}
 				>
 					Wanna edit this Crewmate?
 				</button>

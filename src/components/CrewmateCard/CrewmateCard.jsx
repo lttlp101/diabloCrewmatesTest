@@ -27,6 +27,11 @@ const CrewmateCard = ({ crewmate }) => {
 	// Make sure the color is properly lowercase to match CSS classes
 	const colorClass = crewmate.color ? crewmate.color.toLowerCase() : "";
 
+	// Format the URL - replace spaces with underscores if present
+	const formattedUrlName = crewmate.name.includes(" ")
+		? crewmate.name.replace(/ /g, "_")
+		: crewmate.name;
+
 	return (
 		<div className={`${styles.card} ${styles[colorClass]}`}>
 			<div className={styles.cardContent}>
@@ -75,13 +80,13 @@ const CrewmateCard = ({ crewmate }) => {
 
 				<div className={styles.cardActions}>
 					<Link
-						to={`/crewmate/${crewmate.name}`}
+						to={`/crewmate/${formattedUrlName}`}
 						className={styles.detailsLink}
 					>
 						View Details
 					</Link>
 					<Link
-						to={`/edit/${crewmate.name}`}
+						to={`/edit/${formattedUrlName}`}
 						className={styles.editLink}
 					>
 						Edit Crewmate
